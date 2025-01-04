@@ -28,9 +28,6 @@ Route::group(['prefix' => 'v1', 'as' => 'api.v1.'], function () {
     Route::group(['prefix' => 'user', 'as' => 'user.','middleware'=>'auth:api'], function () {
         Route::get('/', [UserController::class, 'index'])->middleware(['permission:view-user'])->name('index');
         Route::get('/{id}', [UserController::class, 'show'])->middleware(['permission:view-user'])->name('show');
-        Route::post('/', [UserController::class, 'store'])->middleware(['permission:create-user'])->name('store');
         Route::put('/{id}', [UserController::class, 'edit'])->middleware(['permission:update-user'])->name('edit');
-        Route::delete('/', [UserController::class, 'delete'])->middleware(['permission:delete-user'])->name('delete');
-
     });
 });
